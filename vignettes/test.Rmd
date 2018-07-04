@@ -33,7 +33,11 @@ t0 <- Sys.time()
 a <- future_lapply(1:n, time_foo)
 cat(sprintf("Time spend on code in seconds: %.2f\n", difftime(Sys.time(), t0, "secs")))
 
-
-
 ```
 
+```{r}
+internal_foo()
+
+plan(sequential)
+internal_foo()
+```
