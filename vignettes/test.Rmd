@@ -1,0 +1,39 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Tester
+
+```{r}
+library(tester)
+library(future.apply)
+n <- 2
+plan(multicore)
+
+t0 <- Sys.time()
+a <- lapply(1:n, time_foo)
+cat(sprintf("Time spend on code in seconds: %.2f\n", difftime(Sys.time(), t0, "secs")))
+
+
+t0 <- Sys.time()
+a <- future_lapply(1:n, time_foo)
+cat(sprintf("Time spend on code in seconds: %.2f\n", difftime(Sys.time(), t0, "secs")))
+
+
+
+```
+
