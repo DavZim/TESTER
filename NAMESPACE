@@ -2,5 +2,4 @@
 
 export(internal_foo)
 export(time_foo)
-import(data.table)
 import(future)
