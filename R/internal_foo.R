@@ -13,7 +13,7 @@ internal_foo <- function() {
 
   t0 <- Sys.time()
   a <- future.apply::future_lapply(split(df, df$grp), function(d) {
-    Sys.sleep(0.1)
+    time_foo(d)
     nrow(d)
   })
   cat(sprintf("Time spend on code in seconds: %.2f\n", difftime(Sys.time(), t0, "secs")))
